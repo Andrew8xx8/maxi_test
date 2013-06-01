@@ -11,12 +11,14 @@ class MaxiTest::TestFormatter
       end
     end
 
-    def print_summary(result)
-
+    def print_summary(reporter)
+      puts "All test: #{reporter.total_tests}; Passed tests: #{reporter.passed_tests}; Failed tests: #{reporter.failed_tests}"
+      puts "All asserts: #{reporter.total_asserts}; Passed asserts: #{reporter.passed_asserts}; Failed asserts: #{reporter.failed_asserts}"
     end
 
     def format_result(result)
       result ? "PASSED" : "FAILED"
     end
+
   end
 end

@@ -6,12 +6,12 @@ module MaxiTest
   autoload 'TestCase', 'maxi_test/test_case'
   autoload 'TestRunner', 'maxi_test/test_runner'
   autoload 'TestResult', 'maxi_test/test_result'
-  autoload 'TestResultsCollection', 'maxi_test/test_results_collection'
+  autoload 'TestReporter', 'maxi_test/test_reporter'
   autoload 'TestFormatter', 'maxi_test/test_formatter'
 
   class << self
     def run
-      reporter = MaxiTest::TestResultsCollection.new
+      reporter = MaxiTest::TestReporter.new
 
       result = MaxiTest::TestRunner.run(reporter)
     end

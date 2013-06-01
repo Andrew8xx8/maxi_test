@@ -20,6 +20,7 @@ class MaxiTest::TestRunner
         MaxiTest::TestFormatter.print_result(result)
       end
 
+      MaxiTest::TestFormatter.print_summary(reporter)
       reporter
     end
   end

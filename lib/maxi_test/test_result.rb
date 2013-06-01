@@ -8,7 +8,18 @@ class MaxiTest::TestResult
   end
 
   def result
-    result = true
-    @assertions.inject(true) { |r, v| r = r && v }
+    @assertions.reduce(:&)
+  end
+
+  def failed_asserts
+    @assertions.inject(0) {|count, assert| count += 1 unless assert}
+  end
+
+  def passed_asserts
+    @assertions.inject(0) {|count, assert| count += 1 if assert}
+  end
+
+  def total_asserts
+    @assertions.size
   end
 end
