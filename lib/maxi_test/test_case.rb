@@ -10,11 +10,14 @@ class MaxiTest::TestCase
 
     MaxiTest.ioc.get(:test_result).new(self.class.name, name, @assertions)
   rescue Exception => e
-    MaxiTest.ioc.get(:test_result).new(self.class.name, name, [], e.backtrace.join("\n\t"))
+    MaxiTest.ioc.get(:test_result).new(self.class.name, name, [], e)
   end
 
   def assert(value)
-    @assertions << value && true
+    result = value && true
+    raise(MaxiTest::AssertionFailed, )unless result
+
+    @assertions << result
   end
 
   class << self

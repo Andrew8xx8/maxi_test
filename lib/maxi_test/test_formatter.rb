@@ -23,12 +23,22 @@ class MaxiTest::TestFormatter
     end
 
     def print_failed_tests(reporter)
+      puts "\nFailed tests:"
+
       reporter.failed_tests.each do |result|
-        puts "#{result.klass} #{result.test}:"
-        puts "\t #{result.exception}"
+        puts format_test(result)
       end
     end
 
-
+    def format_test(result)
+       puts "\n\t#{result.klass} #{result.test}:"
+       if result.exception.instance_of?(MaxiTest::AssertionFailed)
+         puts "\t\t Assert failed"
+         puts "\t\t Raised: #{result.exception}"
+       else
+         puts "\t\t Raised: #{result.exception}"
+         puts "\t\t #{result.exception.backtrace.join("\n\t\t")}"
+       end
+    end
   end
 end

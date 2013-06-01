@@ -11,6 +11,7 @@ module MaxiTest
   autoload 'Ioc', 'maxi_test/ioc'
 
   class ServiceNotFound < RuntimeError; end
+  class AssertionFailed < RuntimeError; end
 
   class << self
     def ioc
