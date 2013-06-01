@@ -8,6 +8,7 @@ module MaxiTest
   autoload 'TestResult', 'maxi_test/test_result'
   autoload 'TestReporter', 'maxi_test/test_reporter'
   autoload 'TestFormatter', 'maxi_test/test_formatter'
+  autoload 'Assertions', 'maxi_test/assertions'
   autoload 'Ioc', 'maxi_test/ioc'
 
   class ServiceNotFound < RuntimeError; end

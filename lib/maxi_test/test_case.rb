@@ -13,11 +13,12 @@ class MaxiTest::TestCase
     MaxiTest.ioc.get(:test_result).new(self.class.name, name, [], e)
   end
 
-  def assert(value)
-    result = value && true
-    raise(MaxiTest::AssertionFailed, )unless result
+  def method_missing(name, *args)
+    if MaxiTest::Assertions.have_assert?(name)
+      @assertions << MaxiTest::Assertions.run(name, *args)
 
-    @assertions << result
+      raise(MaxiTest::AssertionFailed, @assertions.last.error_message) if @assertions.last.failed?
+    end
   end
 
   class << self

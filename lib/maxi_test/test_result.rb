@@ -17,11 +17,11 @@ class MaxiTest::TestResult
   end
 
   def failed_asserts
-    @assertions.reject {|a| a}
+    @assertions.find_all {|a| a.failed?}
   end
 
   def passed_asserts
-    @assertions.find_all {|a| a}
+    @assertions.find_all {|a| a.passed?}
   end
 
   def all_asserts
@@ -31,6 +31,6 @@ class MaxiTest::TestResult
   private
 
   def result
-    @assertions.reduce(:&) & @exception.nil?
+    failed_asserts.empty? & @exception.nil?
   end
 end
