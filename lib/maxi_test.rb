@@ -1,5 +1,17 @@
 require "maxi_test/version"
+require "pry"
+require "active_support/core_ext/string/inflections"
 
 module MaxiTest
-  # Your code goes here...
+  autoload 'TestCase', 'maxi_test/test_case'
+  autoload 'TestRunner', 'maxi_test/test_runner'
+  autoload 'TestResult', 'maxi_test/test_result'
+  autoload 'TestResultsCollection', 'maxi_test/test_results_collection'
+  autoload 'TestFormatter', 'maxi_test/test_formatter'
+
+  class << self
+    def run
+      result = MaxiTest::TestRunner.run
+    end
+  end
 end
