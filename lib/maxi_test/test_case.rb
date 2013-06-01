@@ -9,6 +9,8 @@ class MaxiTest::TestCase
     send(name)
 
     MaxiTest.ioc.get(:test_result).new(self.class.name, name, @assertions)
+  rescue Exception => e
+    MaxiTest.ioc.get(:test_result).new(self.class.name, name, [], e.backtrace.join("\n\t"))
   end
 
   def assert(value)

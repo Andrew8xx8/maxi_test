@@ -1,10 +1,11 @@
 class MaxiTest::TestResult
-  attr_reader :klass, :test, :assertions
+  attr_reader :klass, :test, :assertions, :exception
 
-  def initialize(klass, test, assertions)
+  def initialize(klass, test, assertions, exception = nil)
     @klass = klass
     @test = test
     @assertions = assertions
+    @exception = exception
   end
 
   def passed?
@@ -30,6 +31,6 @@ class MaxiTest::TestResult
   private
 
   def result
-    @assertions.reduce(:&)
+    @assertions.reduce(:&) & @exception.nil?
   end
 end

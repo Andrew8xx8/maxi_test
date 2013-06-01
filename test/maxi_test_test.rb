@@ -8,4 +8,8 @@ class MaxiTestTest < MaxiTest::TestCase
   def test_assert_false
     assert false
   end
+
+  def test_raise_exception
+    raise Exception
+  end
 end
