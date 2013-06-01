@@ -6,11 +6,11 @@ require 'maxi_test/version'
 Gem::Specification.new do |spec|
   spec.name          = "maxi_test"
   spec.version       = MaxiTest::VERSION
-  spec.authors       = ["Andrew8xx8"]
-  spec.email         = ["avk@8xx8.ru"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["Andrew8xx8", "PlugIN73"]
+  spec.email         = ["avk@8xx8.ru", "laplugin73@gmail.com"]
+  spec.description   = %q{Ruby test framework (exercise)}
+  spec.summary       = %q{Ruby test framework (exercise)}
+  spec.homepage      = "https://github.com/Andrew8xx8/maxi_test"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
