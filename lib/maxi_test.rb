@@ -11,7 +11,9 @@ module MaxiTest
 
   class << self
     def run
-      result = MaxiTest::TestRunner.run
+      reporter = MaxiTest::TestResultsCollection.new
+
+      result = MaxiTest::TestRunner.run(reporter)
     end
   end
 end

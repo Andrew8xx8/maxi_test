@@ -8,22 +8,19 @@ class MaxiTest::TestRunner
       }
     end
 
-    def run
-      results = MaxiTest::TestResultsCollection.new
+    def run(reporter)
 
       @tests.each do |test_case|
         test = test_case[:klass].constantize.new
 
-        test.send(test_case[:name])
+        result = test.run(test_case[:name])
 
-        result = MaxiTest::TestResult.new(test_case[:klass], test_case[:name], test.assertions)
-
-        results.add_result(result)
+        reporter.add_result(result)
 
         MaxiTest::TestFormatter.print_result(result)
       end
 
-      results
+      reporter
     end
   end
 end

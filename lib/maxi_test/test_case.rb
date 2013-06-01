@@ -5,6 +5,12 @@ class MaxiTest::TestCase
     @assertions = []
   end
 
+  def run(name)
+    send(name)
+
+    MaxiTest::TestResult.new(self.class.name, name, @assertions)
+  end
+
   def assert(value)
     @assertions << value && true
   end
