@@ -2,7 +2,6 @@ class MaxiTest::Assertions
   class << self
     def have_assert?(name)
       File.exists?(assert_class_path(name))
-      p assert_class_path(name)
     end
 
     def run(name, *args)
