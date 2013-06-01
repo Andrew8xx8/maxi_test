@@ -7,19 +7,29 @@ class MaxiTest::TestResult
     @assertions = assertions
   end
 
-  def result
-    @assertions.reduce(:&)
+  def passed?
+    result
+  end
+
+  def failed?
+    !result
   end
 
   def failed_asserts
-    @assertions.inject(0) {|count, assert| count += 1 unless assert}
+    @assertions.reject {|a| a}
   end
 
   def passed_asserts
-    @assertions.inject(0) {|count, assert| count += 1 if assert}
+    @assertions.find_all {|a| a}
   end
 
-  def total_asserts
-    @assertions.size
+  def all_asserts
+    @assertions
+  end
+
+  private
+
+  def result
+    @assertions.reduce(:&)
   end
 end

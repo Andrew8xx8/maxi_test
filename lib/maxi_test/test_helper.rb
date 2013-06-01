@@ -1,5 +1,6 @@
 require 'bundler/setup'
 Bundler.require
 
-at_exit { MaxiTest.run }
-
+at_exit do
+  MaxiTest.run
+end

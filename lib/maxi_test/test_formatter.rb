@@ -5,15 +5,16 @@ class MaxiTest::TestFormatter
     end
 
     def print_result(result)
-      puts "#{format_result(result.result)}: #{result.klass} #{result.test}"
+      puts "#{format_result(result.passed?)}: #{result.klass} #{result.test}"
       result.assertions.each do
 
       end
     end
 
     def print_summary(reporter)
-      puts "All test: #{reporter.total_tests}; Passed tests: #{reporter.passed_tests}; Failed tests: #{reporter.failed_tests}"
-      puts "All asserts: #{reporter.total_asserts}; Passed asserts: #{reporter.passed_asserts}; Failed asserts: #{reporter.failed_asserts}"
+      puts "\n"
+      puts "Total test: #{reporter.all_tests.count}; Passed tests: #{reporter.passed_tests.count}; Failed tests: #{reporter.failed_tests.count}"
+      puts "Total asserts: #{reporter.all_asserts.count}; Passed asserts: #{reporter.passed_asserts.count}; Failed asserts: #{reporter.failed_asserts.count}"
     end
 
     def format_result(result)

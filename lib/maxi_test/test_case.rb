@@ -8,7 +8,7 @@ class MaxiTest::TestCase
   def run(name)
     send(name)
 
-    MaxiTest::TestResult.new(self.class.name, name, @assertions)
+    MaxiTest.ioc.get(:test_result).new(self.class.name, name, @assertions)
   end
 
   def assert(value)

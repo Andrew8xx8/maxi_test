@@ -17,10 +17,9 @@ class MaxiTest::TestRunner
 
         reporter.add_result(result)
 
-        MaxiTest::TestFormatter.print_result(result)
+        MaxiTest.ioc.get(:test_formatter).print_result(result)
       end
 
-      MaxiTest::TestFormatter.print_summary(reporter)
       reporter
     end
   end
